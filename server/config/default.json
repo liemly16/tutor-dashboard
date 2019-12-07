@@ -6,9 +6,9 @@
   "mysql": {
     "host": "remotemysql.com",
     "port": "3306",
-    "database": "Oswm26lOGR",
-    "user": "Oswm26lOGR",
-    "password": "jMjFZmikYe"
+    "database": "SiLmQ4Ybi8",
+    "user": "SiLmQ4Ybi8",
+    "password": "EiJ9exxsHg"
   },
   "salt": 10,
   "secret_key": "secret_key",
@@ -20,5 +20,13 @@
     "secret": "thanhtinhpas1",
     "issuer": "thanhtinhpas1",
     "audience": "thanhtinh.com"
+  },
+  "fb": {
+    "facebook_key": "2049800975130375",
+    "facebook_secret": "11de203e897f23516d383c88fdf65d10",
+    "callback_url": "http://localhost:3000/auth/facebook/callback"
+  },
+  "game": {
+    "port": 8810
   }
 }

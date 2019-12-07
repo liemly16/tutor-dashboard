@@ -1,11 +1,27 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# OS X
+.DS_Store*
+Icon?
+._*
 
-# dependencies
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+
+# npm
 node_modules
+package-lock.json
+*.log
+*.gz
 
-# production
-build
 
-# misc
-.DS_Store
-npm-debug.log
+# Coveralls
+coverage
+
+# Benchmarking
+benchmarks/graphs

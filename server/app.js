@@ -3,12 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const passport = require('passport')
 
 var indexRouter = require('./routes/index');
-var meRouter = require('./routes/me')
 
 var app = express();
+
+var allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  res.header('Access-Control-Allow-Credentials', true)
+  next();
+};
+
+app.use(allowCrossDomain)
 
 // use passport
 require('./middlewares/passport.local')(app)
@@ -24,8 +32,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', passport.authenticate('jwt', { session: false }), indexRouter);
-app.use('/me', passport.authenticate('jwt', { session: false }), meRouter)
+
+// PASPORT JWT
+app.use((req, res, next) => {
+  console.log("**REQUEST METHOD: " + req.url)
+  next()
+})
+
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,7 +54,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.send({
+  res.json({
     status: err.status || 500,
     message: err.message
   })

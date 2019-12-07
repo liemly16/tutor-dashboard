@@ -1,39 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport')
-const http = require('http')
-const request = require('request')
-const fs = require('fs')
+const userDB = require('../models/user')
+const util = require('../helpers/helper')
 
-var multer = require('multer');
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/images/');
-  },
-  filename: function (req, file, cb) {
-    var filetype = 'wav';
-
-    cb(null, file.originalname.substring(0, file.originalname.length - 4) + '-' + Date.now() + '.' + filetype);
-  }
-});
-var upload = multer({ storage: storage });
-
-const options = {
-  method: "POST",
-  url: "http://localhost:5000",
-  headers: {
-    "Content-Type": "multipart/form-data"
-  },
-  formData: {
-    "voice": fs.createReadStream("../source/public/images/voice.wav")
-  }
-};
-
-router.get('/vispeech', passport.authenticate('jwt', { session: false }), upload.single("voice"), (req, res, next) => {
-  console.log(req.file)
-  request.post({ url: "http://localhost:5000", formData: { "voice": fs.createReadStream(req.file.path) } }, (err, responHttp, body) => {
-    if (err) console.log(err)
-    res.send(body)
+router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+  delete req.user['password']
+  res.status(200).send({
+    code: 200,
+    message: {
+      iat: (new Date()).getTime(),
+      ...req.user,
+    }
   })
 })
 
