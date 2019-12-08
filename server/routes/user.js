@@ -8,13 +8,11 @@ const util = require('../helpers/helper')
 
 router.post('/update-profile', passport.authenticate('jwt', { session: false }), (req, res) => {
     var user = req.body
-    console.log(user)
     var username = user.username
     if (username) {
         userDB.findByUsername(username).then(value => {
             if (value) {
-                value.name = user.name
-                value.email = user.email
+                Object.assign(value, user);
                 value.password = util.hash_password(user.password)
                 userDB.updateUser(value).then(rs => {
                     res.status(200).json({
@@ -68,7 +66,10 @@ router.post('/login', (req, res, next) => {
         }
 
         req.logIn(user, err => {
-            const token = jwt.sign(user.id, config.get('jwt.secret'))
+            let sign = {};
+            sign.id = user.id;
+            sign.role_id = user.role_id;
+            const token = jwt.sign(sign, config.get('jwt.secret'))
             if (err) {
                 console.log(err)
                 next(err);

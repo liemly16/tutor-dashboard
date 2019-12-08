@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport')
-const userDB = require('../models/user')
-const util = require('../helpers/helper')
+const authenticateTutor = require('../middlewares/tutor.auth');
 
 router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
   delete req.user['password']
@@ -15,7 +14,9 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
   })
 })
 
-router.use('/user/', require(__dirname + '/user'))
+router.use('/tutor', authenticateTutor, require(__dirname + '/tutor/index'));
+
+router.use('/user/', require(__dirname + '/user'));
 
 router.post('/logout', (req, res) => {
   if (req.user) {
