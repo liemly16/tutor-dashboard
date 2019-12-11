@@ -4,7 +4,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from '../constants/ActionTypes';
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_USERS } from '../constants/ActionTypes';
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -68,4 +68,23 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+};
+
+export const getAllUsers = () => dispatch => {
+  axios
+    .get(`http://localhost:3000/user/all`)
+    .then(res => {
+      const { users } = res.data;
+
+      dispatch({
+        type: GET_USERS,
+        payload: users
+      })
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };

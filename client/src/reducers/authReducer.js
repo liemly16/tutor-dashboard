@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, USER_LOADING,GET_ERRORS } from "../constants/ActionTypes";
+import { SET_CURRENT_USER, USER_LOADING,GET_ERRORS, GET_USERS } from "../constants/ActionTypes";
 
 const isEmpty = require('is-empty');
 
@@ -6,7 +6,8 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   loading: false,
-  errorText: ''
+  errorText: '',
+  users:[]
 };
 
 export default function(state = initialState, action) {
@@ -27,6 +28,11 @@ export default function(state = initialState, action) {
         ...state,
         errorText: action.payload
       };
+      case GET_USERS:
+        return {
+          ...state,
+        users: action.payload
+        };
     default:
       return state;
   }

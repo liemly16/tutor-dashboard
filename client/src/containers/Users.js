@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../actions/authActions";
+import { getAllUsers } from "../actions/authActions";
 
 class Users extends Component {
   onLogoutClick = e => {
@@ -11,27 +11,31 @@ class Users extends Component {
 
   render() {
     const { user } = this.props.auth;
-    const users = [
-      {
-        name: "Marsha Hogan",
-        locate: "Illunois, United States",
-        phone: "+01 3214 6522",
-        email: "chadengle@dummy.com",
-        country: "united states",
-        id: "ST17241",
-        dob: "03 Jun 1990"
-      },
+    // const users = [
+    //   {
+    //     name: "Marsha Hogan",
+    //     locate: "Illunois, United States",
+    //     phone: "+01 3214 6522",
+    //     email: "chadengle@dummy.com",
+    //     country: "united states",
+    //     id: "ST17241",
+    //     dob: "03 Jun 1990"
+    //   },
 
-      {
-        name: "Marsha",
-        locate: "United States",
-        phone: "+01 3214 6522",
-        email: "chadengle@dummy.com",
-        country: "united states",
-        id: "ST17241",
-        dob: "03 Jun 1990"
-      }
-    ];
+    //   {
+    //     name: "Marsha",
+    //     locate: "United States",
+    //     phone: "+01 3214 6522",
+    //     email: "chadengle@dummy.com",
+    //     country: "united states",
+    //     id: "ST17241",
+    //     dob: "03 Jun 1990"
+    //   }
+    // ];
+    if (this.props.auth.users.length === 0) {
+      this.props.getAllUsers();
+    }
+    const { users } = this.props.auth;
     let infor = users.map((user, i) => {
       return (
         <tr>
@@ -43,14 +47,12 @@ class Users extends Component {
           <td>
             <a href="#">
               <span className="list-enq-name">{user.name}</span>
-              <span className="list-enq-city">{user.locate}</span>
+              <span className="list-enq-city">{user.name}</span>
             </a>
           </td>
-          <td>{user.phone}</td>
           <td>{user.email}</td>
-          <td>{user.country}</td>
-          <td>{user.id}</td>
-          <td>{user.dob}</td>
+          
+       
           <td>
             <span className="label label-success">Active</span>
           </td>
@@ -163,7 +165,7 @@ class Users extends Component {
                   </li>
                   <li>
                     <h5>
-                      Victoria Baker <span> Santa Ana, CA</span>
+                      {user.name} <span> Santa Ana, CA</span>
                     </h5>
                   </li>
                   <li />
@@ -447,297 +449,16 @@ class Users extends Component {
                               <tr>
                                 <th>User</th>
                                 <th>Name</th>
-                                <th>Phone</th>
+                              
                                 <th>Email</th>
-                                <th>Country</th>
-                                <th>Id</th>
-                                <th>Date of birth</th>
+                              
                                 <th>Status</th>
                                 <th>View</th>
                               </tr>
                             </thead>
                             <tbody>
-                                {infor}
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/1.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Marsha Hogan
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 3214 6522</td>
-                                <td>chadengle@dummy.com</td>
-                                <td>united states</td>
-                                <td>ST17241</td>
-                                <td>03 Jun 1990</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/2.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Lucas Caden
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 8574 6854</td>
-                                <td>lucas@gmail.com</td>
-                                <td>Illinois</td>
-                                <td>ST10231</td>
-                                <td>16 Feb 1987</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/4.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Ethan Oliver
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 8574 6854</td>
-                                <td>Ethan@gmail.com</td>
-                                <td>Illinois</td>
-                                <td>ST32168</td>
-                                <td>21 Jun 1992</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/5.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Ethan Oliver
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 8574 6854</td>
-                                <td>Ethan@gmail.com</td>
-                                <td>Illinois</td>
-                                <td>ST32168</td>
-                                <td>21 Jun 1992</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/1.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Marsha Hogan
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 3214 6522</td>
-                                <td>chadengle@dummy.com</td>
-                                <td>united states</td>
-                                <td>ST17241</td>
-                                <td>03 Jun 1990</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/2.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Lucas Caden
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 8574 6854</td>
-                                <td>lucas@gmail.com</td>
-                                <td>Illinois</td>
-                                <td>ST10231</td>
-                                <td>16 Feb 1987</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/4.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Ethan Oliver
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 8574 6854</td>
-                                <td>Ethan@gmail.com</td>
-                                <td>Illinois</td>
-                                <td>ST32168</td>
-                                <td>21 Jun 1992</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span className="list-img">
-                                    <img src="images/user/5.png" alt="" />
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#">
-                                    <span className="list-enq-name">
-                                      Ethan Oliver
-                                    </span>
-                                    <span className="list-enq-city">
-                                      Illunois, United States
-                                    </span>
-                                  </a>
-                                </td>
-                                <td>+01 8574 6854</td>
-                                <td>Ethan@gmail.com</td>
-                                <td>Illinois</td>
-                                <td>ST32168</td>
-                                <td>21 Jun 1992</td>
-                                <td>
-                                  <span className="label label-success">
-                                    Active
-                                  </span>
-                                </td>
-                                <td>
-                                  <a
-                                    href="admin-student-details.html"
-                                    className="ad-st-view"
-                                  >
-                                    View
-                                  </a>
-                                </td>
-                              </tr>
+                              {infor}
+                              
                             </tbody>
                           </table>
                         </div>
@@ -762,4 +483,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { logoutUser })(Users);
+export default connect(mapStateToProps, { getAllUsers })(Users);

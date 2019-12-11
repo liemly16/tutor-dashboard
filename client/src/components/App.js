@@ -36,10 +36,8 @@ const App = () => (
     <div className="App">
     
       <Route exact path="/" component={Dashboard} />
-     
       <Route path="/users" component={Users} />
       <Route exact path="/register" component={Register} />
-      <Navbar />
       <Route exact path="/login" component={Login} />
     </div>
   </Router>
