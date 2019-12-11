@@ -8,7 +8,8 @@ import { setCurrentUser, logoutUser } from '../actions/authActions';
 import Register from '../containers/auth/Register';
 import Login from '../containers/auth/Login';
 import Navbar from "./NavBar";
-import Dashboard from "../containers/Dashboard"
+import Dashboard from "../containers/Dashboard";
+import Users from "../containers/Users"
 
 // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
@@ -33,9 +34,12 @@ import Dashboard from "../containers/Dashboard"
 const App = () => (
   <Router>
     <div className="App">
-    <Navbar />
+    
       <Route exact path="/" component={Dashboard} />
+     
+      <Route path="/users" component={Users} />
       <Route exact path="/register" component={Register} />
+      <Navbar />
       <Route exact path="/login" component={Login} />
     </div>
   </Router>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
@@ -21,7 +22,7 @@ class Dashboard extends Component {
             <div className="col-md-2 col-sm-3 col-xs-6 sb1-1">
               <a href="#" className="btn-close-menu"><i className="fa fa-times" aria-hidden="true" /></a>
               <a href="#" className="atab-menu"><i className="fa fa-bars tab-menu" aria-hidden="true" /></a>
-              <a href="index.html" className="logo"><img src="../../public/images/logo1.png" alt="" />
+              <a href="index.html" className="logo"><img src="images/logo1.png" alt="" />
               </a>
             </div>
             {/*== SEARCH ==*/}
@@ -42,7 +43,7 @@ class Dashboard extends Component {
             {/*== MY ACCCOUNT ==*/}
             <div className="col-md-2 col-sm-3 col-xs-6">
               {/* Dropdown Trigger */}
-              <a className="waves-effect dropdown-button top-user-pro" href="#" data-activates="top-menu"><img src="../../public/images/user/6.png" alt="" />My Account <i className="fa fa-angle-down" aria-hidden="true" />
+              <a className="waves-effect dropdown-button top-user-pro" href="#" data-activates="top-menu"><img src="images/user/6.png" alt="" />My Account <i className="fa fa-angle-down" aria-hidden="true" />
               </a>
               {/* Dropdown Structure */}
               <ul id="top-menu" className="dropdown-content top-menu-sty">
@@ -62,7 +63,7 @@ class Dashboard extends Component {
               {/*== USER INFO ==*/}
               <div className="sb2-12">
                 <ul>
-                  <li><img src="../../public/images/placeholder.jpg" alt="" />
+                  <li><img src="images/placeholder.jpg" alt="" />
                   </li>
                   <li>
                     <h5>{user.name} <span> Santa Ana, CA</span></h5>
@@ -92,7 +93,10 @@ class Dashboard extends Component {
                   <li><a href="javascript:void(0)" className="collapsible-header"><i className="fa fa-user" aria-hidden="true" /> Users</a>
                     <div className="collapsible-body left-sub-menu">
                       <ul>
-                        <li><a href="admin-user-all.html">All Users</a>
+                        <li>
+                            <Link to="/users">
+                            All Users
+                            </Link>
                         </li>
                         <li><a href="admin-user-add.html">Add New user</a>
                         </li>
@@ -275,7 +279,7 @@ class Dashboard extends Component {
                             </thead>
                             <tbody>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/1.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/1.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Marsha Hogan</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -290,7 +294,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/2.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/2.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Lucas Caden</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -305,7 +309,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/4.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/4.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Ethan Oliver</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -320,7 +324,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/5.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/5.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Ethan Oliver</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -335,7 +339,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/1.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/1.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Marsha Hogan</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -350,7 +354,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/2.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/2.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Lucas Caden</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -365,7 +369,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/4.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/4.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Ethan Oliver</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -380,7 +384,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/user/5.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/user/5.png" alt="" /></span>
                                 </td>
                                 <td><a href="#"><span className="list-enq-name">Ethan Oliver</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -429,7 +433,7 @@ class Dashboard extends Component {
                             </thead>
                             <tbody>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-1.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-1.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Aerospace Engineering</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -444,7 +448,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-5.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-5.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Fashion Technology</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -459,7 +463,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-2.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-2.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Agriculture Courses</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -474,7 +478,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-3.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-3.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Marine Engineering</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -489,7 +493,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-4.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-4.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Building, Construction Management</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -504,7 +508,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-1.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-1.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Aerospace Engineering</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -519,7 +523,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-5.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-5.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Fashion Technology</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -534,7 +538,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-2.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-2.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Agriculture Courses</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -549,7 +553,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-3.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-3.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Marine Engineering</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -564,7 +568,7 @@ class Dashboard extends Component {
                                 <td><a href="admin-student-details.html" className="ad-st-view">View</a></td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/course/sm-4.jpg" alt="" /></span>
+                                <td><span className="list-img"><img src="images/course/sm-4.jpg" alt="" /></span>
                                 </td>
                                 <td><a href="admin-student-details.html"><span className="list-enq-name">Building, Construction Management</span><span className="list-enq-city">Illunois, United States</span></a>
                                 </td>
@@ -916,7 +920,7 @@ class Dashboard extends Component {
                             </thead>
                             <tbody>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/1.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/1.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">Linked In</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -927,7 +931,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/2.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/2.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">Twitter</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -938,7 +942,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/3.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/3.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">Facebook</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -949,7 +953,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/4.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/4.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">Google Plus</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -960,7 +964,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/5.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/5.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">YouTube</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -971,7 +975,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/6.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/6.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">WhatsApp</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -982,7 +986,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/7.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/7.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">VK</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
@@ -993,7 +997,7 @@ class Dashboard extends Component {
                                 </td>
                               </tr>
                               <tr>
-                                <td><span className="list-img"><img src="../../public/images/sm/2.png" alt="" /></span>
+                                <td><span className="list-img"><img src="images/sm/2.png" alt="" /></span>
                                 </td>
                                 <td><span className="list-enq-name">Twitter</span><span className="list-enq-city">Illunois, United States</span>
                                 </td>
