@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getAllUsers } from "../actions/authActions";
+import UserDetail from "../components/Users/Modal"
+import 'antd/dist/antd.css';
 
 class Users extends Component {
   onLogoutClick = e => {
@@ -38,7 +40,7 @@ class Users extends Component {
     const { users } = this.props.auth;
     let infor = users.map((user, i) => {
       return (
-        <tr>
+        <tr onClick={() => UserDetail(user)}>
           <td>
             <span className="list-img">
               <img src="images/user/1.png" alt="" />
