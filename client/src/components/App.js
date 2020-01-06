@@ -12,6 +12,8 @@ import Dashboard from "../containers/Dashboard";
 import Users from "../containers/Users"
 import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container"
 import ManagerContract from "../containers/ManagerContract/ManagerContract.container"
+import DetailContractPage from "../containers/DetailContractPage/DetailContractPage.container"
+
 // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
 //   // Set auth token header auth
@@ -39,7 +41,8 @@ const App = () => (
       <Route exact path="/" component={Dashboard} />
       <Route path="/users" component={Users} />
       <Route path="/tags" component={ManagerTagSkill} />
-      <Route path="/contracts" component={ManagerContract} />
+      <Route exact path="/contracts" component={ManagerContract} />
+      <Route exact path="/contracts/:id" component={DetailContractPage} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
     </div>

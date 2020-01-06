@@ -1,7 +1,6 @@
 /* eslint-disable import/named */
 /* eslint-disable import/no-named-as-default */
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
 import { getAllTag, createTag, editTag, deleteTag } from '../../redux/tag/tag.action'
 import { getAllMajor } from '../../redux/major/major.action'
 import ManagerTagSkill from './ManagerTagSkill.component'
