@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getAllUsers } from "../actions/authActions";
@@ -10,6 +11,10 @@ class Users extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+  componentDidMount(){
+    this.props.getAllUsers();
+  }
 
   render() {
     const { user } = this.props.auth;
@@ -34,13 +39,13 @@ class Users extends Component {
     //     dob: "03 Jun 1990"
     //   }
     // ];
-    if (this.props.auth.users.length === 0) {
-      this.props.getAllUsers();
-    }
+    // if (this.props.auth.users.length === 0) {
+    //   this.props.getAllUsers();
+    // }
     const { users } = this.props.auth;
     let infor = users.map((user, i) => {
       return (
-        <tr onClick={() => UserDetail(user)}>
+        <tr key={i} onClick={() => UserDetail(user)}>
           <td>
             <span className="list-img">
               <img src="images/user/1.png" alt="" />
@@ -207,18 +212,33 @@ class Users extends Component {
                       </ul>
                     </div>
                   </li>
-                  <li>
-                    <a href="javascript:void(0)" className="collapsible-header">
-                      <i className="fa fa-user" aria-hidden="true" /> Users
-                    </a>
+                  <li><a href="javascript:void(0)" className="collapsible-header"><i className="fa fa-user" aria-hidden="true" /> Users</a>
                     <div className="collapsible-body left-sub-menu">
                       <ul>
                         <li>
-                          <a href="admin-user-all.html">All Users</a>
+                            <Link to="/users">
+                            All Users
+                            </Link>
+                        </li>
+                        <li><a href="admin-user-add.html">Add New user</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><a href="javascript:void(0)" className="collapsible-header"><i className="fa fa-tag" aria-hidden="true" /> Tags</a>
+                    <div className="collapsible-body left-sub-menu">
+                      <ul>
+                        <li>
+                            <Link to="/tags">
+                            All Tags
+                            </Link>
                         </li>
                         <li>
-                          <a href="admin-user-add.html">Add New user</a>
+                          <Link to="/tags/add">
+                            Add New Tags
+                            </Link>
                         </li>
+                        
                       </ul>
                     </div>
                   </li>

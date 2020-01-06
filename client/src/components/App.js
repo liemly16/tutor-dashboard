@@ -10,6 +10,7 @@ import Login from '../containers/auth/Login';
 import Navbar from "./NavBar";
 import Dashboard from "../containers/Dashboard";
 import Users from "../containers/Users"
+import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container"
 
 // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
@@ -37,6 +38,7 @@ const App = () => (
     
       <Route exact path="/" component={Dashboard} />
       <Route path="/users" component={Users} />
+      <Route path="/tags" component={ManagerTagSkill} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
     </div>
