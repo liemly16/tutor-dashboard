@@ -1,21 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 // eslint-disable-next-line camelcase
-import jwt_decode from 'jwt-decode';
-import setAuthToken from '../utils/setAuthToken';
-import store from '../store';
-import { setCurrentUser, logoutUser } from '../actions/authActions';
-import Register from '../containers/auth/Register';
-import Login from '../containers/auth/Login';
-import Navbar from "./NavBar";
-import Dashboard from "../containers/Dashboard";
-import Users from "../containers/Users"
-import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container"
-import ManagerContract from "../containers/ManagerContract/ManagerContract.container"
-import DetailContractPage from "../containers/DetailContractPage/DetailContractPage.container"
-import ManagerReport from "../containers/ManagerReport/ManagerReport.container"
-import DetailContractReport from "../containers/DetailContractReport/DetailContractReport.container"
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../utils/setAuthToken";
+import store from "../store";
+import { setCurrentUser, logoutUser } from "../actions/authActions";
+import Register from "../containers/auth/Register";
+import Login from "../containers/auth/Login";
 
+import Dashboard from "../containers/Dashboard";
+import Users from "../containers/Users";
+import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container";
+import ManagerContract from "../containers/ManagerContract/ManagerContract.container";
+import DetailContractPage from "../containers/DetailContractPage/DetailContractPage.container";
+import ManagerReport from "../containers/ManagerReport/ManagerReport.container";
+import DetailContractReport from "../containers/DetailContractReport/DetailContractReport.container";
+import Admin from "../layouts/Admin";
+import "antd/dist/antd.css";
 // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
 //   // Set auth token header auth
@@ -36,21 +43,44 @@ import DetailContractReport from "../containers/DetailContractReport/DetailContr
 //   }
 // }
 
-const App = () => (
+const App = ({ currentUser }) => (
   <Router>
     <div className="App">
-    
-      <Route exact path="/" component={Dashboard} />
-      <Route path="/users" component={Users} />
-      <Route path="/tags" component={ManagerTagSkill} />
-      <Route exact path="/contracts" component={ManagerContract} />
-      <Route exact path="/contracts/:id" component={DetailContractPage} />
-      <Route exact path="/reports" component={ManagerReport} />
-      <Route exact path="/reports/:id" component={DetailContractReport} />
-      <Route exact path="/register" component={Register} />
-      <Route exact path="/login" component={Login} />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/admin" component={Admin} />
+        {/* <Route path="/admin/users" component={Users} />
+        <Route path="/admin/tags" component={ManagerTagSkill} />
+        <Route path="/admin/contracts" component={ManagerContract} />
+        <Route path="/admin/contracts/:id" component={DetailContractPage} />
+        <Route path="/admin/reports" component={ManagerReport} />
+        <Route path="/admin/reports/:id" component={DetailContractReport} /> */}
+        <Redirect from="/" to="/admin/users" />
+      </Switch>
     </div>
   </Router>
 );
 
-export default App;
+const mapStateToProps = state => ({
+  currentUser: state.auth.user
+});
+
+export default connect(mapStateToProps)(App);
+
+// {currentUser ? (
+//   <Switch>
+//     {/* <Route path="/admin" component={Admin} />
+//     <Redirect to="/admin/reports" /> */}
+//     <Route path="/admin/users" component={Users} />
+// <Route path="/admin/tags" component={ManagerTagSkill} />
+// <Route path="/admin/contracts" component={ManagerContract} />
+// <Route path="/admin/contracts/:id" component={DetailContractPage} />
+// <Route path="/admin/reports" component={ManagerReport} />
+// <Route path="/admin/reports/:id" component={DetailContractReport} />
+//   </Switch>
+// ) : (
+//   <Switch>
+//     <Redirect to="/admin/reports" />
+//   </Switch>
+
+// )}
