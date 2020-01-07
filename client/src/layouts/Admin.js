@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
-// core components
 import { connect } from "react-redux";
 import Dashboard from "../containers/Dashboard";
 import Users from "../containers/Users";
@@ -9,17 +8,19 @@ import ManagerContract from "../containers/ManagerContract/ManagerContract.conta
 import DetailContractPage from "../containers/DetailContractPage/DetailContractPage.container";
 import ManagerReport from "../containers/ManagerReport/ManagerReport.container";
 import DetailContractReport from "../containers/DetailContractReport/DetailContractReport.container";
+import StatisticPage from '../containers/StatisticPage/StatisticPage.container';
 
 const switchRoutes = (
   <Switch>
-    <Route exact path="/admin" component={Dashboard} />
-    <Route exact path="/admin/users" component={Users} />
-    <Route exact path="/admin/tags" component={ManagerTagSkill} />
-    <Route exact path="/admin/contracts" component={ManagerContract} />
-    <Route exact path="/admin/contracts/:id" component={DetailContractPage} />
-    <Route exact path="/admin/reports" component={ManagerReport} />
-    <Route exact path="/admin/reports/:id" component={DetailContractReport} />
-    <Redirect to="/admin/users" />
+    <Route exact path="/" component={Dashboard} />
+    <Route exact path="/users" component={Users} />
+    <Route exact path="/tags" component={ManagerTagSkill} />
+    <Route exact path="/contracts" component={ManagerContract} />
+    <Route exact path="/contracts/:id" component={DetailContractPage} />
+    <Route exact path="/reports" component={ManagerReport} />
+    <Route exact path="/reports/:id" component={DetailContractReport} />
+    <Route exact path="/statistic" component={StatisticPage} />
+    <Redirect to="/users" />
   </Switch>
 );
 
@@ -163,7 +164,7 @@ function Admin(user) {
                   </div>
                 </li>
                 <li>
-                  <a href="/admin/users" className="collapsible-header">
+                  <a href="/users" className="collapsible-header">
                     <i className="fa fa-user" aria-hidden="true" />{" "}
                    Users
       
@@ -171,20 +172,20 @@ function Admin(user) {
                   <div className="collapsible-body left-sub-menu"></div>
                 </li>
                 <li>
-                  <a href="/admin/tags" className="collapsible-header">
+                  <a href="/tags" className="collapsible-header">
                     <i className="fa fa-tag" aria-hidden="true" />{" "}
                     Tags
                   </a>
                   <div className="collapsible-body left-sub-menu"></div>
                 </li>
                 <li>
-                  <a href="/admin/contracts" className="collapsible-header">
+                  <a href="/contracts" className="collapsible-header">
                     <i className="fa fa-bookmark-o" aria-hidden="true" />
                     Contracts
                   </a>
                 </li>
                 <li>
-                  <a href="/admin/reports" className="collapsible-header">
+                  <a href="/reports" className="collapsible-header">
                     <i className="fa fa-bars" aria-hidden="true" />{" "}
                     Reports
                   </a>

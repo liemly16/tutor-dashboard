@@ -2,8 +2,7 @@
 
 # dependencies
 node_modules
-package-lock.json
-debug.log
+
 
 # production
 build
@@ -11,3 +10,5 @@ build
 # misc
 .DS_Store
 npm-debug.log
+package-lock.json
+debug.log
