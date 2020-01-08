@@ -1,5 +1,2 @@
-# API for Uber tutor Application
-
-** HCMUS ** `Develop web application advance `
-
-* Student * `1612704 - Trần Thanh Tịnh`
+# project-tutor-backend-admin
+Đồ án cuối kỳ môn Web nâng cao - K16 - HKI 2019
