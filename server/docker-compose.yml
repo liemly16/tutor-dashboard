@@ -1,0 +1,9 @@
+version: "3.0"
+
+services:
+  app:
+    container_name: tutor-dashboard-server
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
