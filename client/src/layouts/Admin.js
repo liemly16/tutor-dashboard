@@ -12,12 +12,14 @@ import DetailContractReport from "../containers/DetailContractReport/DetailContr
 import StatisticPage from '../containers/StatisticPage/StatisticPage.container';
 // import TopSalePageBySkill from '../containers/TopSalePageBySkill/TopSalePageBySkill.container'
 import SalaryStatisticPageContainer from '../containers/SalaryStatisticsPage/SalaryStatisticsPage.container'
-
+import ManagerAccountUserContainer from '../containers/ManagerAccountUser/ManagerAccountUser.container'
+import DetailInformationUserContainer from '../containers/DetailInformationUser/DetailInformationUser.container'
 
 const switchRoutes = (
   <Switch>
     <Route exact path="/" component={Dashboard} />
-    <Route exact path="/users" component={Users} />
+    <Route exact path="/users" component={ManagerAccountUserContainer} />
+    <Route exact path="/users/:id" component={DetailInformationUserContainer} />
     <Route exact path="/tags" component={ManagerTagSkill} />
     <Route exact path="/contracts" component={ManagerContract} />
     <Route exact path="/contracts/:id" component={DetailContractPage} />
