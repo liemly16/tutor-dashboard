@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import "antd/dist/antd.css"
 import Dashboard from "../containers/Dashboard";
 import Users from "../containers/Users";
 import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container";
@@ -9,6 +10,9 @@ import DetailContractPage from "../containers/DetailContractPage/DetailContractP
 import ManagerReport from "../containers/ManagerReport/ManagerReport.container";
 import DetailContractReport from "../containers/DetailContractReport/DetailContractReport.container";
 import StatisticPage from '../containers/StatisticPage/StatisticPage.container';
+// import TopSalePageBySkill from '../containers/TopSalePageBySkill/TopSalePageBySkill.container'
+import SalaryStatisticPageContainer from '../containers/SalaryStatisticsPage/SalaryStatisticsPage.container'
+
 
 const switchRoutes = (
   <Switch>
@@ -20,6 +24,7 @@ const switchRoutes = (
     <Route exact path="/reports" component={ManagerReport} />
     <Route exact path="/reports/:id" component={DetailContractReport} />
     <Route exact path="/statistic" component={StatisticPage} />
+    <Route exact path="/salary-statistic" component={SalaryStatisticPageContainer} />
     <Redirect to="/users" />
   </Switch>
 );
@@ -191,17 +196,17 @@ function Admin(user) {
                   </a>
                 </li>
                 <li>
-                  <a href="admin-slider.html">
-                    <i className="fa fa-image" aria-hidden="true" /> Slider
+                  <a href="/statistic">
+                    <i className="fa fa-image" aria-hidden="true" /> Statistic
                   </a>
                 </li>
                 <li>
-                  <a href="admin-quick-link.html">
+                  <a href="/salary-statistic">
                     <i
                       className="fa fa-external-link-square"
                       aria-hidden="true"
                     />{" "}
-                    Slider quick link
+                    Top revenue by tutor
                   </a>
                 </li>
                 {/* <li>

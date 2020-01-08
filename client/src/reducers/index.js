@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'
 import authReducer from './authReducer'
 import tagReducers from '../redux/tag/tag.reducers'
 import majorReducers from '../redux/major/major.reducers'
+import statisticsReducers from '../redux/statistic/statistic.reducers'
 
 // const userPersistConfig = {
 //   key: 'auth',
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   tag: tagReducers,
   major: majorReducers,
+  statistic: statisticsReducers
 })
 
 export default rootReducer

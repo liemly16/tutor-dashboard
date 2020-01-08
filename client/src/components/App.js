@@ -11,9 +11,10 @@ import { connect } from "react-redux";
 // import setAuthToken from "../utils/setAuthToken";
 // import store from "../store";
 // import { setCurrentUser, logoutUser } from "../actions/authActions";
+import "antd/dist/antd.css";
 import Login from "../containers/auth/Login";
 import Admin from "../layouts/Admin";
-import "antd/dist/antd.css";
+
 
 // import Dashboard from "../containers/Dashboard";
 // import Users from "../containers/Users";
