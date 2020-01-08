@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
   dataMajor: state.major.data,
   loadingData: state.major.loading,
   length: state.tag.length,
-  user: state.auth.user
+  user: state.user.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

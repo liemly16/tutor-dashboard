@@ -18,7 +18,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 export const store = createStore(
   rootReducer,
-  initialState,
   compose(
     applyMiddleware(...middlewares),
     (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
@@ -30,6 +29,7 @@ export const store = createStore(
 sagaMiddleWare.run(rootSagas);
 export const persistor = persistStore(store);
 
+export default { store, persistStore }
 
 
 // import { createStore, applyMiddleware, compose } from "redux";

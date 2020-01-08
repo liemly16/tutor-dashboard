@@ -12,9 +12,8 @@ import { connect } from "react-redux";
 // import store from "../store";
 // import { setCurrentUser, logoutUser } from "../actions/authActions";
 import "antd/dist/antd.css";
-import Login from "../containers/auth/Login";
+import LoginPageContainer from "../containers/LoginPage/LoginPage.container";
 import Admin from "../layouts/Admin";
-
 
 // import Dashboard from "../containers/Dashboard";
 // import Users from "../containers/Users";
@@ -47,40 +46,39 @@ import Admin from "../layouts/Admin";
 const App = ({ currentUser }) => (
   <Router>
     <div className="App">
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={Admin} />
-        {/* <Route path="/admin/users" component={Users} />
-        <Route path="/admin/tags" component={ManagerTagSkill} />
-        <Route path="/admin/contracts" component={ManagerContract} />
-        <Route path="/admin/contracts/:id" component={DetailContractPage} />
-        <Route path="/admin/reports" component={ManagerReport} />
-        <Route path="/admin/reports/:id" component={DetailContractReport} /> */}
-      </Switch>
+    <Switch> 
+      <Route path="/login" component={LoginPageContainer} />
+      <Route path="/" component={Admin} />
+      {/* {currentUser ? (
+        <Switch> 
+          <Route path="/" component={Admin} />
+          <Redirect  to="/users" />
+          </Switch> 
+      ) : (
+        <Switch> 
+       
+        <Redirect from ="/" to="/login" />
+        </Switch> 
+      )} */}
+      </Switch> 
     </div>
   </Router>
 );
 
 const mapStateToProps = state => ({
-  currentUser: state.auth.user
+  currentUser: state.user.currentUser
 });
 
 export default connect(mapStateToProps)(App);
 
-// {currentUser ? (
-//   <Switch>
-//     {/* <Route path="/admin" component={Admin} />
-//     <Redirect to="/admin/reports" /> */}
-//     <Route path="/admin/users" component={Users} />
-// <Route path="/admin/tags" component={ManagerTagSkill} />
-// <Route path="/admin/contracts" component={ManagerContract} />
-// <Route path="/admin/contracts/:id" component={DetailContractPage} />
-// <Route path="/admin/reports" component={ManagerReport} />
-// <Route path="/admin/reports/:id" component={DetailContractReport} />
-//   </Switch>
-// ) : (
-//   <Switch>
-//     <Redirect to="/admin/reports" />
-//   </Switch>
 
-// )}
+{/* <Switch>
+<Route path="/login" component={LoginPageContainer} />
+<Route path="/" component={Admin} />
+<Route path="/admin/users" component={Users} />
+<Route path="/admin/tags" component={ManagerTagSkill} />
+<Route path="/admin/contracts" component={ManagerContract} />
+<Route path="/admin/contracts/:id" component={DetailContractPage} />
+<Route path="/admin/reports" component={ManagerReport} />
+<Route path="/admin/reports/:id" component={DetailContractReport} />
+</Switch> */}

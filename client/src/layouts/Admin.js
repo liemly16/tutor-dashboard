@@ -13,6 +13,8 @@ import TopSalePageBySkill from '../containers/TopSalePageBySkill/TopSalePageBySk
 import SalaryStatisticPageContainer from '../containers/SalaryStatisticsPage/SalaryStatisticsPage.container'
 import ManagerAccountUserContainer from '../containers/ManagerAccountUser/ManagerAccountUser.container'
 import DetailInformationUserContainer from '../containers/DetailInformationUser/DetailInformationUser.container'
+import { logout } from '../redux/user/user.actions'
+import ExitToApp from '@material-ui/icons/ExitToApp'
 
 const switchRoutes = (
   <Switch>
@@ -31,7 +33,12 @@ const switchRoutes = (
   </Switch>
 );
 
-function Admin(user) {
+function Admin(props) {
+
+  const handleLogout = () => {
+    props.logout();
+  }
+
   return (
     <>
       {/*== MAIN CONTRAINER ==*/}
@@ -112,8 +119,9 @@ function Admin(user) {
               </li>
               <li className="divider" />
               <li>
-                <a href="#" className="ho-dr-con-last waves-effect">
+                <a href="/login" onClick={handleLogout} className="ho-dr-con-last waves-effect">
                   <i className="fa fa-sign-in" aria-hidden="true" /> Logout
+                  <ExitToApp fontSize="large" style={{ color: "#faad14"}}/>
                 </a>
               </li>
             </ul>
@@ -132,7 +140,7 @@ function Admin(user) {
                 </li>
                 <li>
                   <h5>
-                    {user.name} <span> Santa Ana, CA</span>
+                     <span> Santa Ana, CA</span>
                   </h5>
                 </li>
                 <li />
@@ -142,7 +150,7 @@ function Admin(user) {
             <div className="sb2-13">
               <ul className="collapsible" data-collapsible="accordion">
                 <li>
-                  <a href="admin.html" className="menu-active">
+                  <a href="/" className="menu-active">
                     <i className="fa fa-bar-chart" aria-hidden="true" />{" "}
                     Dashboard
                   </a>
@@ -211,22 +219,13 @@ function Admin(user) {
                     Top revenue by tutor
                   </a>
                 </li>
-                {/* <li>
-                  <a href="javascript:void(0)" className="collapsible-header">
-                    <i className="fa fa-calendar" aria-hidden="true" /> Events
-                  </a>
-                  <div className="collapsible-body left-sub-menu">
-                    <ul>
-                      <li>
-                        <a href="admin-event-all.html">All Events</a>
-                      </li>
-                      <li>
-                        <a href="admin-event-add.html">Create New Events</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
                 <li>
+                  <a href="/top-sales-skill" className="collapsible-header">
+                    <i className="fa fa-calendar" aria-hidden="true" />
+                    Top revenue by skill
+                  </a>
+                </li>
+                {/* <li>
                   <a href="javascript:void(0)" className="collapsible-header">
                     <i className="fa fa-bullhorn" aria-hidden="true" /> Seminar
                   </a>
@@ -354,7 +353,7 @@ function Admin(user) {
 }
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.user.currentUser
 });
 
-export default connect(mapStateToProps, null)(Admin);
+export default connect(mapStateToProps, {logout})(Admin);
