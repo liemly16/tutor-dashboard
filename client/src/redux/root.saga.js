@@ -5,7 +5,7 @@ import majorSaga from './major/major.sagas'
 import contractSaga from './contract/contract.sagas'
 import reportSaga from './report/report.sagas'
 import chatSaga from './chat/chat.sagas'
-
+import skillSaga from './skill/skill.saga'
 import statisticSaga from './statistic/statistic.sagas'
 
 export default function* rootSagas() {
@@ -16,7 +16,7 @@ export default function* rootSagas() {
     call(contractSaga),
     call(reportSaga),
     call(chatSaga),
-    //call(skillSaga),
+    call(skillSaga),
     call(statisticSaga),
   ])
 }

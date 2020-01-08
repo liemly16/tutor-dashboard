@@ -3,14 +3,13 @@ import { Switch, Route, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "antd/dist/antd.css"
 import Dashboard from "../containers/Dashboard";
-import Users from "../containers/Users";
 import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container";
 import ManagerContract from "../containers/ManagerContract/ManagerContract.container";
 import DetailContractPage from "../containers/DetailContractPage/DetailContractPage.container";
 import ManagerReport from "../containers/ManagerReport/ManagerReport.container";
 import DetailContractReport from "../containers/DetailContractReport/DetailContractReport.container";
 import StatisticPage from '../containers/StatisticPage/StatisticPage.container';
-// import TopSalePageBySkill from '../containers/TopSalePageBySkill/TopSalePageBySkill.container'
+import TopSalePageBySkill from '../containers/TopSalePageBySkill/TopSalePageBySkill.container'
 import SalaryStatisticPageContainer from '../containers/SalaryStatisticsPage/SalaryStatisticsPage.container'
 import ManagerAccountUserContainer from '../containers/ManagerAccountUser/ManagerAccountUser.container'
 import DetailInformationUserContainer from '../containers/DetailInformationUser/DetailInformationUser.container'
@@ -27,6 +26,7 @@ const switchRoutes = (
     <Route exact path="/reports/:id" component={DetailContractReport} />
     <Route exact path="/statistic" component={StatisticPage} />
     <Route exact path="/salary-statistic" component={SalaryStatisticPageContainer} />
+    <Route exact path="/top-sales-skill" component={TopSalePageBySkill} />
     <Redirect to="/users" />
   </Switch>
 );
