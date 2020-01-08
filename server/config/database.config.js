@@ -1,3 +1,3 @@
 module.exports = {
-  url: "mongodb+srv://admin:admin@cluster0-nglc0.mongodb.net/database"
+  url: "mongodb://admin:admin@35.240.217.54:27017/database?authSource=admin"
 };
