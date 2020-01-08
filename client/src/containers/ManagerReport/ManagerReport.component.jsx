@@ -88,7 +88,26 @@ const ManagerReport = ({ getAllReport, history }) => {
   }
 
   return (
+
     <div className="table-report">
+      {/*== breadcrumbs ==*/}
+      <div className="sb2-2-2">
+        <ul>
+          <li>
+            <a href="index.html">
+              <i className="fa fa-home" aria-hidden="true" /> Home
+            </a>
+          </li>
+          <li className="active-bre">
+            <a href="#"> Reports</a>
+          </li>
+          <li className="page-back">
+            <a href="index.html">
+              <i className="fa fa-backward" aria-hidden="true" /> Back
+            </a>
+          </li>
+        </ul>
+      </div>
       {loading ? (
         <div
           style={{

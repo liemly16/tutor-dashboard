@@ -196,7 +196,7 @@ const ManagerContract = ({ getAllContract, history }) => {
                   </a>
                 </li>
                 <li className="active-bre">
-                  <a href="#"> Users(Students)</a>
+                  <a href="#"> Contracts</a>
                 </li>
                 <li className="page-back">
                   <a href="index.html">

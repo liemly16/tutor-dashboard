@@ -141,7 +141,7 @@ const ManagerTagSkill = ({
             </a>
           </li>
           <li className="active-bre">
-            <a href="#"> Users(Students)</a>
+            <a href="#"> Tags</a>
           </li>
           <li className="page-back">
             <a href="index.html">

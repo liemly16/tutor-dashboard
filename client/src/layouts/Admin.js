@@ -14,7 +14,6 @@ import SalaryStatisticPageContainer from "../containers/SalaryStatisticsPage/Sal
 import ManagerAccountUserContainer from "../containers/ManagerAccountUser/ManagerAccountUser.container";
 import DetailInformationUserContainer from "../containers/DetailInformationUser/DetailInformationUser.container";
 import { logout } from "../redux/user/user.actions";
-import ExitToApp from "@material-ui/icons/ExitToApp";
 
 const switchRoutes = (
   <Switch>
@@ -33,7 +32,7 @@ const switchRoutes = (
       component={SalaryStatisticPageContainer}
     />
     <Route exact path="/top-sales-skill" component={TopSalePageBySkill} />
-    <Redirect to="/users" />
+    <Redirect from="/" to="/users" />
   </Switch>
 );
 
@@ -42,10 +41,9 @@ class Admin extends Component {
     this.props.logout();
   };
 
-  // componentDidUpdate() {
-  //   // If logged in and user navigates to Login page, should redirect them to dashboard
-  //   if (!this.props.user) {
-  //     this.props.history.push("/login");
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.user) {
+  //     this.props.history.push("/users");
   //   }
   // }
 
@@ -56,6 +54,7 @@ class Admin extends Component {
   //   }
   // }
  
+  
   render() {
     
     return (
