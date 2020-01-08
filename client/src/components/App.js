@@ -15,14 +15,6 @@ import "antd/dist/antd.css";
 import LoginPageContainer from "../containers/LoginPage/LoginPage.container";
 import Admin from "../layouts/Admin";
 
-// import Dashboard from "../containers/Dashboard";
-// import Users from "../containers/Users";
-// import ManagerTagSkill from "../containers/ManagerTagSkill/ManagerTagSkill.container";
-// import ManagerContract from "../containers/ManagerContract/ManagerContract.container";
-// import DetailContractPage from "../containers/DetailContractPage/DetailContractPage.container";
-// import ManagerReport from "../containers/ManagerReport/ManagerReport.container";
-// import DetailContractReport from "../containers/DetailContractReport/DetailContractReport.container";
-
 // Check for token to keep user logged in
 // if (localStorage.jwtToken) {
 //   // Set auth token header auth
@@ -70,15 +62,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(App);
-
-
-{/* <Switch>
-<Route path="/login" component={LoginPageContainer} />
-<Route path="/" component={Admin} />
-<Route path="/admin/users" component={Users} />
-<Route path="/admin/tags" component={ManagerTagSkill} />
-<Route path="/admin/contracts" component={ManagerContract} />
-<Route path="/admin/contracts/:id" component={DetailContractPage} />
-<Route path="/admin/reports" component={ManagerReport} />
-<Route path="/admin/reports/:id" component={DetailContractReport} />
-</Switch> */}

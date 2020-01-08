@@ -34,7 +34,7 @@ const TeacherItem = ({ teacher, rank }) => {
       <div className="teacher-item__content">
         <div className="teacher-item__content__basic-info">
           <div className="teacher-item__content__basic-info__left">
-            <Link to={`/admin/account/user/${teacher._id}`}>
+            <Link to={`/users/${teacher._id}`}>
               <img src={teacher.avatar} alt="" />
             </Link>
           </div>
