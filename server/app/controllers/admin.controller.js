@@ -51,7 +51,7 @@ exports.createAdmin = async (req, res) => {
         return res.status(400).json({ message: "Tạo tài khoản thất bại." });
       }
     }
-  } catch {
+  } catch (err) {
     return res.status(500).json({ message: "Đã có lỗi xảy ra, vui lòng thử lại." });
   }
 }
@@ -102,12 +102,12 @@ exports.blockAccount = async (req, res) => {
           .populate({
             path: 'userId',
             select: ['-password', '-passwordHash'],
-            populate: [{ path: 'district' }, {path: 'city'}],
+            populate: [{ path: 'district' }, { path: 'city' }],
           })
           .populate('tags._id')
 
         if (data) {
-          return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã bị khóa.",data })
+          return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã bị khóa.", data })
         }
 
         return res.status(400).json({ message: "Tài khoản không tồn tại." });
@@ -117,9 +117,9 @@ exports.blockAccount = async (req, res) => {
           .populate({
             path: 'userId',
             select: ['-password', '-passwordHash'],
-            populate: [{ path: 'district' }, {path: 'city'}],
+            populate: [{ path: 'district' }, { path: 'city' }],
           })
-          return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã bị khóa.", data })
+        return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã bị khóa.", data })
       }
     }
   }
@@ -138,7 +138,7 @@ exports.upBlockAccount = async (req, res) => {
 
   try {
     const user = await User.findOneAndUpdate({ _id }, { isBlock: false }, { new: true });
-    
+
     if (user) {
       const { typeID } = user
       if (parseInt(typeID) === EUserTypes.TEACHER) {
@@ -146,12 +146,12 @@ exports.upBlockAccount = async (req, res) => {
           .populate({
             path: 'userId',
             select: ['-password', '-passwordHash'],
-            populate: [{ path: 'district' }, {path: 'city'}],
+            populate: [{ path: 'district' }, { path: 'city' }],
           })
           .populate('tags._id')
 
         if (data) {
-          return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã mở khóa.",data })
+          return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã mở khóa.", data })
         }
 
         return res.status(400).json({ message: "Tài khoản không tồn tại." });
@@ -161,9 +161,9 @@ exports.upBlockAccount = async (req, res) => {
           .populate({
             path: 'userId',
             select: ['-password', '-passwordHash'],
-            populate: [{ path: 'district' }, {path: 'city'}],
+            populate: [{ path: 'district' }, { path: 'city' }],
           })
-          return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã mở khóa.",data })
+        return res.status(200).json({ message: "Tài khoản " + user.displayName + " đã mở khóa.", data })
       }
     }
   }
